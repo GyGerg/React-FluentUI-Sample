@@ -30,7 +30,7 @@ const useSidebarStyles = makeStyles({
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
         
-        ...shorthands.border('1px', 'solid', tokens.colorNeutralBackground5),
+        ...shorthands.borderRight('2px', 'solid', tokens.colorNeutralBackground6),
         boxSizing: 'border-box',
         height: '100%',
         minWidth: '0px',
@@ -47,7 +47,7 @@ const useSidebarStyles = makeStyles({
         gridTemplateColumns: '0fr',
         overflowY: 'auto',
         minWidth: '0px',
-        backgroundColor: tokens.colorNeutralBackground3,
+        backgroundColor: tokens.colorNeutralBackground5,
         ...shorthands.transition('grid-template-columns', '300ms')
     },
     open: {
@@ -108,11 +108,6 @@ function Sidebar(props:SidebarProps) {
                     <Switch onChange={(_,data) => {props.onCheck(data.checked); isChecked.current = data.checked}} checked={isChecked.current} labelPosition='above' label="Dark mode"/>
                 </Tooltip>
             </TabList>
-            {selectedValue === 'value2' && <div className={styles.sideContent}>
-                <h1>sziaszto</h1>
-                <h2>ez a jutub csatorná</h2>
-                <h3>m</h3>    
-            </div>}
         </nav>
     )
 }

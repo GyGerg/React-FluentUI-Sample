@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Sidebar from './Sidebar'
-import { FluentProvider, Portal, makeStyles, mergeClasses, shorthands, teamsDarkTheme, teamsLightTheme } from '@fluentui/react-components'
+import { FluentProvider, Portal, makeStyles, mergeClasses, shorthands, teamsDarkTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/react-components'
 import Topbar from './Topbar'
 import Fundraisers from './Fundraisers'
 
@@ -43,7 +43,7 @@ function App() {
   const [currentTab, setCurrentTab] = useState("value1")
   const style = useStyle()
   return (
-    <FluentProvider theme={useDarkTheme ? teamsDarkTheme : teamsLightTheme}>
+    <FluentProvider theme={useDarkTheme ? webDarkTheme : webLightTheme}>
       <div className={style.root}>
         <Topbar onSidebarToggle={() => setIsSidebarClosed(!isSidebarClosed)} />
         <Sidebar onCheck={setUseDarkTheme} onTabChange={setCurrentTab} isClosed={isSidebarClosed}/>

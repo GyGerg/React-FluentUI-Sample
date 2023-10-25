@@ -26,7 +26,6 @@ const useStyles = makeStyles({
         paddingLeft: '0.8rem',
         backgroundColor: tokens.colorBrandBackground,
         
-        // ...shorthands.transition('all', '0.5s', '0s', 'linear')
     },
 });
 

@@ -1,5 +1,5 @@
-import { Avatar, Button, DataGrid, DataGridBody, DataGridCell, DataGridHeader, DataGridHeaderCell, DataGridRow, Divider, TableCellLayout, TableColumnDefinition, createTableColumn, makeStyles, shorthands, tokens } from "@fluentui/react-components";
-import { ArrowLeftRegular, FluentIcon, PersonRegular } from "@fluentui/react-icons";
+import { Avatar, Button, CompoundButton, DataGrid, DataGridBody, DataGridCell, DataGridHeader, DataGridHeaderCell, DataGridRow, Divider, TableCellLayout, TableColumnDefinition, createTableColumn, makeStyles, shorthands, tokens } from "@fluentui/react-components";
+import { ArrowLeftRegular, FluentIcon, MapFilled, MapRegular, PersonRegular } from "@fluentui/react-icons";
 import { useState } from "react";
 
 const useStyles = makeStyles({
@@ -12,10 +12,11 @@ const useStyles = makeStyles({
     fundraiserHeader: {
         display: 'flex',
         flexDirection: 'row',
-        ...shorthands.border('1px', 'solid', ),
         boxSizing: 'border-box',
         width: '100%',
-        backgroundColor: tokens.colorNeutralBackground3
+        backgroundColor: tokens.colorNeutralBackground5,
+        ...shorthands.borderBottom('1px', 'solid', tokens.colorNeutralBackground6),
+        ...shorthands.borderLeft('1px', 'solid', tokens.colorNeutralBackground6)
     }
 })
 
@@ -97,7 +98,10 @@ function Fundraisers() {
     return (
         <div className={style.fundraiserRoot}>
             <header className={style.fundraiserHeader}>
-                <Button iconPosition="before" appearance='transparent' icon={<ArrowLeftRegular />} />
+                <Button iconPosition="before" appearance='outline' shape='square' icon={<ArrowLeftRegular />} />
+                <Button iconPosition="before" appearance='outline' shape='square' icon={<MapFilled color={tokens.colorPaletteGreenForeground1} />} size="large">
+                    Bing Maps
+                </Button>
                 
             </header>
             <h2>Active Fundraisers</h2>
