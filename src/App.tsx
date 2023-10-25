@@ -11,8 +11,8 @@ const useStyle = makeStyles({
   root: {
     ...shorthands.transition('grid-template-columns', '300ms'),
     display: 'grid',
-    gridTemplateRows: 'fit-content(10%) 4fr',
-    gridTemplateColumns: 'fit-content(10%) 4fr',
+    gridTemplateRows: 'auto 4fr',
+    gridTemplateColumns: 'auto 4fr',
     gridTemplateAreas: `
     "header header header"
     "nav content content"
@@ -44,7 +44,7 @@ function App() {
   const style = useStyle()
   return (
     <FluentProvider theme={useDarkTheme ? teamsDarkTheme : teamsLightTheme}>
-      <div className={mergeClasses(style.root)}>
+      <div className={style.root}>
         <Topbar onSidebarToggle={() => setIsSidebarClosed(!isSidebarClosed)} />
         <Sidebar onCheck={setUseDarkTheme} onTabChange={setCurrentTab} isClosed={isSidebarClosed}/>
           <main style={{

@@ -1,4 +1,4 @@
-import { Avatar, Button, DataGrid, DataGridBody, DataGridCell, DataGridHeader, DataGridHeaderCell, DataGridRow, Divider, TableCellLayout, TableColumnDefinition, createTableColumn, makeStyles, shorthands } from "@fluentui/react-components";
+import { Avatar, Button, DataGrid, DataGridBody, DataGridCell, DataGridHeader, DataGridHeaderCell, DataGridRow, Divider, TableCellLayout, TableColumnDefinition, createTableColumn, makeStyles, shorthands, tokens } from "@fluentui/react-components";
 import { ArrowLeftRegular, FluentIcon, PersonRegular } from "@fluentui/react-icons";
 import { useState } from "react";
 
@@ -14,7 +14,8 @@ const useStyles = makeStyles({
         flexDirection: 'row',
         ...shorthands.border('1px', 'solid', ),
         boxSizing: 'border-box',
-        width: '100%'
+        width: '100%',
+        backgroundColor: tokens.colorNeutralBackground3
     }
 })
 
@@ -96,7 +97,7 @@ function Fundraisers() {
     return (
         <div className={style.fundraiserRoot}>
             <header className={style.fundraiserHeader}>
-                <Button iconPosition="before" icon={<ArrowLeftRegular />} />
+                <Button iconPosition="before" appearance='transparent' icon={<ArrowLeftRegular />} />
                 
             </header>
             <h2>Active Fundraisers</h2>

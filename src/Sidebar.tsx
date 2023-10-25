@@ -9,6 +9,7 @@ import {
     ForwardRefComponent,
     SwitchProps,
     mergeClasses,
+    tokens,
  } from '@fluentui/react-components'
 import { 
     AddRegular, 
@@ -18,11 +19,9 @@ import {
     DocumentRegular, 
     MoneyRegular, 
     OptionsRegular, 
-    SettingsRegular,
-    StoreMicrosoftRegular
+    SettingsRegular
 } from '@fluentui/react-icons';
-import { ForwardedRef, useRef, useState } from 'react';
-import Fundraisers from './Fundraisers';
+import { useRef, useState } from 'react';
 
 const useSidebarStyles = makeStyles({
     sidebar: {
@@ -31,26 +30,25 @@ const useSidebarStyles = makeStyles({
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
         
-        ...shorthands.border('1px', 'solid', '#eee'),
+        ...shorthands.border('1px', 'solid', tokens.colorNeutralBackground5),
         boxSizing: 'border-box',
         height: '100%',
         minWidth: '0px',
         overflowX: 'hidden',
         paddingRight: '0px',
-        // paddingTop: '4rem',
         paddingTop: '8px',
+        '& .fui-Tab': {
+            width: '100%'
+        }
     },
     sidebarContainer: {
         ...shorthands.gridArea("nav"),
         display: 'grid',
+        gridTemplateColumns: '0fr',
         overflowY: 'auto',
         minWidth: '0px',
+        backgroundColor: tokens.colorNeutralBackground3,
         ...shorthands.transition('grid-template-columns', '300ms')
-    },
-    closed: {
-        gridTemplateColumns: '0fr'
-        // width: 0,
-        // display: 'none',
     },
     open: {
         gridTemplateColumns: '1fr'
@@ -59,6 +57,9 @@ const useSidebarStyles = makeStyles({
         position: 'relative',
         height: '100%',
         backgroundColor: 'blue',
+    },
+    fillWidth: {
+        width: '100%',
     }
 });
 
@@ -73,9 +74,11 @@ function Sidebar(props:SidebarProps) {
     const [selectedValue, setSelectedValue] = useState("value1")
     const isChecked = useRef(true)
     const styles = useSidebarStyles();
+
+    
     
     return (
-        <nav className={mergeClasses(styles.sidebarContainer, props.isClosed ? styles.closed : styles.open)}>
+        <nav className={props.isClosed ? styles.sidebarContainer : mergeClasses(styles.sidebarContainer, styles.open)}>
             <TabList vertical size="large" appearance='subtle' 
                 className={styles.sidebar} 
                 selectedValue={selectedValue} 
@@ -96,9 +99,9 @@ function Sidebar(props:SidebarProps) {
                     <DocumentRegular fontSize={'2rem'}/>
                 </Tab>
                 <h3>Fundraiser</h3>
-                <Tab icon={<ChartMultipleRegular/>} value="dashboards" content={"Dashboards"} />
-                <Tab icon={<CurrencyDollarEuroRegular/>} value="fundraisers" content={"Fundraisers"} />
-                <Tab icon={<BuildingBankRegular/>} value="donations" content={"Donations"} />
+                <Tab icon={<ChartMultipleRegular/>} value="dashboards" content={"Dashboards"} className={styles.fillWidth} />
+                <Tab icon={<CurrencyDollarEuroRegular/>} value="fundraisers" content={"Fundraisers"} className={styles.fillWidth} />
+                <Tab icon={<BuildingBankRegular/>} value="donations" content={"Donations"} className={styles.fillWidth} />
                 <Divider inset={false}/>
                 <Tab value="value9" ><SettingsRegular fontSize={'2rem'}/></Tab>
                 <Tooltip content="Switch theme with me" relationship='label' positioning='above' appearance='inverted'>

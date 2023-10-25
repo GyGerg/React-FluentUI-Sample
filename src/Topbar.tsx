@@ -4,6 +4,7 @@ import {
     shorthands,
     Tab,
     TabList,
+    tokens,
  } from '@fluentui/react-components'
 import { 
     AddRegular, GridRegular, 
@@ -15,14 +16,17 @@ const useStyles = makeStyles({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'flex-start',
+        
         alignItems: 'center',
         // width: '100%',
         // height: 'fit-content',
-        ...shorthands.border('1px','solid','#eee'),
+        
+        // ...shorthands.border('0px 1px 1px 1px','solid',tokens.colorNeutralBackground5Selected),
         boxSizing: 'border-box',
         paddingLeft: '0.8rem',
+        backgroundColor: tokens.colorBrandBackground,
         
-        ...shorthands.transition('all', '0.5s', '0s', 'linear')
+        // ...shorthands.transition('all', '0.5s', '0s', 'linear')
     },
 });
 
